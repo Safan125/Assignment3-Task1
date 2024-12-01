@@ -7,18 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
     let users = JSON.parse(localStorage.getItem('users'));
     let user = users.find(user => user.email === email);
-if(user.cart)
 for(let id = 1; id <= 8; id++) {
-    if(id<=user.cart.length){
     if (user.cart[id]>=0) {
     const items = document.getElementsByClassName("item");        
     const item = items[id - 1];
     const countElement = item.getElementsByTagName("h4")[0];        
     countElement.innerHTML = "Count : " + user.cart[id];
     }
-}
-    else
-        break;
     }
 });
 if(document.cookie.indexOf('loggedIn=true') === -1) {
