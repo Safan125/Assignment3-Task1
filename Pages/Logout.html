@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WorkWithMe</title>
+        <!--Normalize-->
+        <link rel="stylesheet" href="../css/Normalize.css"></link>
+        <!--Font awesome-->
+        <link rel="stylesheet" href="../css/all.min.css" />
+        <!--Public CSS File-->
+        <link rel="stylesheet" href="../css/public.css">
+        <!--Main CSS File-->
+        <link rel="stylesheet" href="../css/logout.css">
+        <!--Google Fonts Roboto-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
+<body>
+            <!--Header Begins-->
+            <div class="header">
+                <div class="container">
+                    <div class="MainIcon">
+                        <i class="fa-solid fa-chess-knight"></i>
+                        <h3> Crusty Krap</h3>
+                    </div>
+                    <div class="icons">
+                        <a class="hitem" href="../index.html" > Home </a>
+                        <a class="hitem" href="ShoppingCart.html"> ShoppingCart </a>
+                    </div>
+                </div>
+            </div>
+            <!--Header Ends-->
+            <div class="landing">
+                <h2 id="Wel"></h2>
+                <button onclick="logout()">Logout</button>
+            </div>
+            <script>
+                const name=document.cookie.split("name=")[1];
+                console.log(name);
+                document.getElementById("Wel").innerHTML="Welcome "+name+" to our page";
+                function logout(){
+                    document.cookie = 'loggedIn=false; path=/';
+                    document.cookie = 'email=; path=/';
+                    document.cookie = 'name=; path=/';
+                    window.location.pathname = '/';   
+                }
+            </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+:root{
+    --main-col: #ffa123;
+    --sec-col:#081800;
+    --background-col:#f3f3f3;
+}
+.landing{
+    margin-top: 150px;
+}
+.menu{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.itemsGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    gap:40px;
+}
+.itemsGrid .item{
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0px 0px 4px black;
+}
+.itemsGrid .item img{
+    max-width: 100%;
+    object-fit: cover;
+    height: 200px;
+}

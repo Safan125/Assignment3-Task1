@@ -1,0 +1,9 @@
+:root{
+    --main-col: #ffa123;
+    --sec-col:#081800;
+    --background-col:#f3f3f3;
+}
+.landing{
+    margin-top: 150px;
+    text-align: center;
+}

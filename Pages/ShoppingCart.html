@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safan</title>
+    <!--Normalize-->
+    <link rel="stylesheet" href="../css/Normalize.css"></link>
+    <!--Font awesome-->
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <!--Public CSS File-->
+    <link rel="stylesheet" href="../css/public.css">
+    <!--Main CSS File-->
+    <link rel="stylesheet" href="../css/cart.css">
+    <!--Google Fonts Playwrite Polska-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+PL:wght@100..400&display=swap" rel="stylesheet">
+    <!--Google Fonts Roboto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Header Begins-->
+    <div class="header">
+        <div class="container">
+            <div class="MainIcon">
+                <i class="fa-solid fa-chess-knight"></i>
+                <h3> Crusty Krap</h3>
+            </div>
+            <div class="icons">
+                <a class="hitem" href="../index.html" > Home </a>
+                <a class="hitem" href="ShoppingCart.html"> ShoppingCart </a>
+            </div>
+            <a class="work" href="login.html" id="login">
+               SignUp/Login <i class="fa-solid fa-circle-check"></i>
+            </a>
+        </div>
+    </div>
+    <div class="landing">
+        <div class="container" id="Landing">
+            <div class="itemsGrid" id="items">
+
+            </div>
+        </div>
+        <div class="LoginFirst" id="LoginFirst">
+
+        </div>
+    </div> 
+    <!--Header Ends-->  
+    <script src="../js/Public.js"></script>
+    <script>
+            if(document.cookie.indexOf('loggedIn=true') === -1) {
+                document.getElementById("Landing").innerHTML="";
+                document.getElementById("LoginFirst").innerHTML="You must login first";
+            }
+            const email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
+        
+        let users = JSON.parse(localStorage.getItem('users'));
+        let user = users.find(user => user.email === email);
+        let have=false;
+        let totalPrice = 0;
+    for(let id = 1; id <= 8; id++) {
+        if (user.cart[id]>0) {
+            totalPrice += user.cart[id] * user.cartPrice[id];
+            have=true;
+            let item = document.createElement('div');
+            item.classList.add('item');
+            item.innerHTML = `
+                <img src="../images/${user.cartimg[id]}" alt="item${id}">
+                <h3>${user.cartitem[id]}</h3>
+                <p>Price: $${user.cartPrice[id]}</p>
+                <button onclick="removeFromCart(${id})">Remove from Cart</button>
+                <button onclick="decrement(${id})">decrement</button>
+                <h4>Count : ${user.cart[id]}</h4>
+            `;
+            document.getElementById('items').appendChild(item);
+        }
+        };
+    if(!have){
+        document.getElementById("LoginFirst").innerHTML="Your cart is empty";
+    }
+    else{
+        let price = document.createElement('div');
+        price.innerHTML = `
+            <h3>Total Price: $${totalPrice}</h3>
+        `;
+        document.getElementById("Landing").appendChild(price);
+    }
+    function removeFromCart(id) {
+        user.cart[id] = 0;
+        localStorage.setItem('users', JSON.stringify(users));
+        location.reload();
+    }
+    function decrement(id) {
+        if(user.cart[id] > 0){
+        user.cart[id]--;
+        localStorage.setItem('users', JSON.stringify(users));
+        location.reload();
+        }
+    }
+    </script>
+</body>
+</html>
