@@ -22,5 +22,5 @@ document.getElementById('LoginForm').addEventListener('submit', function(event) 
     document.cookie = 'loggedIn=true; expires=0; path=/';
     document.cookie = 'email='+email+'; expires=0; path=/';
     document.cookie = 'name='+fnm+' '+lnm+'; expires=0; path=/'
-    window.location.href = './Pages/Logout.html';
+    window.location.href = './Logout.html';
 });

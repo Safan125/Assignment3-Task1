@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     if(document.cookie.indexOf('loggedIn=true') !== -1) {
         document.getElementById('login').innerHTML = 'Logout';
-        document.getElementById('login').href = 'pages/logout.html';
+        document.getElementById('login').href = './Pages/Logout.html';
     }
     const email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
         

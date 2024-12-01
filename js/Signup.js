@@ -18,5 +18,5 @@ document.getElementById('SignupForm').addEventListener('submit', function(event)
     document.cookie = 'email='+email+'; expires=0; path=/';
     document.cookie = 'name='+fnm+' '+lnm+'; expires=0; path=/'
     alert('Signup successful!');
-    window.location.href = './Pages/Logout.html';
+    window.location.href = './Logout.html';
 });
