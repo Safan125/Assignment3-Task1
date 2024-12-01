@@ -17,9 +17,10 @@ for(let id = 1; id <= 8; id++) {
     countElement.innerHTML = "Count : " + user.cart[id];
     }
 }
-else
-break;
-}});
+    else
+        break;
+    }
+});
 if(document.cookie.indexOf('loggedIn=true') === -1) {
     document.getElementById("Landing").innerHTML="";
     document.getElementById("LoginFirst").innerHTML="You must login first";
