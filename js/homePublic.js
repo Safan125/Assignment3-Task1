@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(document.cookie.indexOf('loggedIn=true') !== -1) {
         document.getElementById('login').innerHTML = 'Logout';
         document.getElementById('login').href = './Pages/Logout.html';
-    
+    }
     const email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
         
     let users = JSON.parse(localStorage.getItem('users'));
@@ -19,7 +19,7 @@ for(let id = 1; id <= 8; id++) {
 }
 else
 break;
-}}});
+}});
 if(document.cookie.indexOf('loggedIn=true') === -1) {
     document.getElementById("Landing").innerHTML="";
     document.getElementById("LoginFirst").innerHTML="You must login first";
