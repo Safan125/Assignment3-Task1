@@ -9,6 +9,7 @@ let user = users.find(user => user.email === email);
 let have=false;
 let totalPrice = 0;
 for(let id = 1; id <= 8; id++) {
+    if(id<user.cart.length){
 if (user.cart[id]>0) {
 totalPrice += user.cart[id] * user.cartPrice[id];
 have=true;
@@ -24,6 +25,9 @@ item.innerHTML = `
 `;
 document.getElementById('items').appendChild(item);
 }
+    }
+    else
+    break;
 };
 if(!have){
 document.getElementById("LoginFirst").innerHTML="Your cart is empty";
